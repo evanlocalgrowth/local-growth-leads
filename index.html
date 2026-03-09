@@ -4,24 +4,563 @@
 <title>Local Growth Leads | High-Intent Leads for Local Businesses</title>
 
 <style>
-/* ------------------ GLOBAL STYLES ------------------ */
+:root {
+    --bg: #0b1220;
+    --navy: #0a2540;
+    --blue: #2563eb;
+    --blue-dark: #1d4ed8;
+    --purple: #6366f1;
+    --accent: #f97316;
+    --light: #f4f6f8;
+    --card-bg: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #6b7280;
+}
+
+/* Global */
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    background: #f4f6f8;
-    color: #0a2540;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--light);
+    color: var(--text-main);
     overflow-x: hidden;
 }
 
 h1, h2, h3 {
     font-weight: 700;
+    margin: 0;
 }
 
-/* Fade-in animation */
+p {
+    margin: 0 0 10px;
+}
+
+/* Layout */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(11, 18, 32, 0.96);
+    backdrop-filter: blur(10px);
+    color: white;
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-mark {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--purple), var(--blue));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 18px;
+}
+
+.header-logo span {
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+
+.nav-cta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-link {
+    color: #e5e7eb;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+    color: white;
+}
+
+.button-primary {
+    background: linear-gradient(135deg, var(--purple), var(--blue));
+    color: white;
+    padding: 10px 20px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.button-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(37, 99, 235, 0.55);
+    opacity: 0.95;
+}
+
+.button-outline {
+    background: transparent;
+    color: white;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.6);
+    padding: 8px 16px;
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.button-outline:hover {
+    background: rgba(15, 23, 42, 0.7);
+    border-color: white;
+}
+
+/* Hero */
+.hero {
+    background: radial-gradient(circle at top left, #1d4ed8 0, #0b1220 40%, #020617 100%);
+    color: white;
+    padding: 80px 20px 90px;
+}
+
+.hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 40px;
+    align-items: center;
+}
+
+.hero-kicker {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #a5b4fc;
+    margin-bottom: 10px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    line-height: 1.1;
+    margin-bottom: 16px;
+}
+
+.hero-sub {
+    font-size: 16px;
+    color: #e5e7eb;
+    max-width: 480px;
+    margin-bottom: 22px;
+}
+
+.hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.badge {
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.6);
+    color: #e5e7eb;
+}
+
+.hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.hero-note {
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+.hero-metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 18px;
+    font-size: 13px;
+    color: #cbd5f5;
+}
+
+.metric {
+    display: flex;
+    flex-direction: column;
+}
+
+.metric span:first-child {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+/* Hero right */
+.hero-panel {
+    background: rgba(15, 23, 42, 0.9);
+    border-radius: 18px;
+    padding: 20px 18px;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.hero-panel-title {
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+.hero-panel-sub {
+    font-size: 12px;
+    color: #9ca3af;
+    margin-bottom: 14px;
+}
+
+.hero-panel-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 6px;
+    color: #e5e7eb;
+}
+
+.hero-panel-tag {
+    font-size: 11px;
+    color: #a5b4fc;
+    margin-bottom: 10px;
+}
+
+/* Sections */
+.section {
+    padding: 70px 20px;
+}
+
+.section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.section-kicker {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--blue);
+    margin-bottom: 6px;
+}
+
+.section-header h2 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.section-header p {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* Cards */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 18px 18px 20px;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 35px rgba(15, 23, 42, 0.16);
+    border-color: rgba(37, 99, 235, 0.6);
+}
+
+.card h3 {
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.card p {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* How it works */
+.steps-list {
+    display: grid;
+    gap: 14px;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.step-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.step-number {
+    width: 26px;
+    height: 26px;
+    border-radius: 999px;
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.step-content h4 {
+    margin: 0 0 4px;
+    font-size: 14px;
+}
+
+.step-content p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* Case studies */
+.case-card p {
+    margin-bottom: 4px;
+}
+
+/* Quote section + form */
+.quote-section {
+    background: white;
+    border-radius: 20px;
+    padding: 26px 24px;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+    gap: 26px;
+    align-items: flex-start;
+}
+
+.quote-copy h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.quote-copy p {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+.quote-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.quote-bullets li {
+    margin-bottom: 6px;
+}
+
+.quote-bullets span {
+    color: var(--blue);
+    font-weight: 600;
+}
+
+/* Multi-step form */
+.form-shell {
+    background: #0b1120;
+    border-radius: 16px;
+    padding: 18px 18px 20px;
+    color: white;
+    border: 1px solid rgba(148, 163, 184, 0.5);
+}
+
+.form-title {
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.form-sub {
+    font-size: 11px;
+    color: #9ca3af;
+    margin-bottom: 12px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(30, 64, 175, 0.6);
+    overflow: hidden;
+    margin-bottom: 14px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 25%;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--purple), var(--blue));
+    transition: width 0.25s ease;
+}
+
+.form-step {
+    display: none;
+}
+
+.form-step.active {
+    display: block;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 10px;
+}
+
+.form-row label {
+    font-size: 11px;
+    color: #e5e7eb;
+}
+
+.form-row input,
+.form-row select,
+.form-row textarea {
+    border-radius: 10px;
+    border: 1px solid rgba(148, 163, 184, 0.7);
+    background: rgba(15, 23, 42, 0.9);
+    color: white;
+    padding: 8px 9px;
+    font-size: 12px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.6);
+    background: rgba(15, 23, 42, 1);
+}
+
+.form-row textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+    gap: 8px;
+}
+
+.button-secondary {
+    background: transparent;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.7);
+    color: #e5e7eb;
+    padding: 7px 14px;
+    font-size: 12px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.button-secondary:hover {
+    background: rgba(15, 23, 42, 0.9);
+    border-color: #e5e7eb;
+}
+
+.button-primary-sm {
+    background: linear-gradient(135deg, var(--purple), var(--blue));
+    border-radius: 999px;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    font-size: 12px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.5);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.button-primary-sm:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 30px rgba(37, 99, 235, 0.7);
+    opacity: 0.96;
+}
+
+.form-footnote {
+    margin-top: 8px;
+    font-size: 10px;
+    color: #9ca3af;
+}
+
+/* Contact section */
+.contact-section {
+    text-align: center;
+    font-size: 14px;
+}
+
+.contact-section p {
+    color: var(--text-muted);
+}
+
+/* Footer */
+footer {
+    background: #020617;
+    color: #9ca3af;
+    text-align: center;
+    padding: 18px 16px 22px;
+    font-size: 12px;
+}
+
+/* Animations */
 .fade-in {
     opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 1s ease forwards;
+    transform: translateY(18px);
+    animation: fadeIn 0.8s ease forwards;
 }
 
 @keyframes fadeIn {
@@ -31,11 +570,10 @@ h1, h2, h3 {
     }
 }
 
-/* Scroll reveal animation */
 .reveal {
     opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s ease;
+    transform: translateY(30px);
+    transition: all 0.7s ease;
 }
 
 .reveal.visible {
@@ -43,115 +581,32 @@ h1, h2, h3 {
     transform: translateY(0);
 }
 
-/* ------------------ HEADER ------------------ */
-header {
-    background: #0a2540;
-    color: white;
-    padding: 25px;
-    text-align: center;
-    animation: fadeIn 1s ease forwards;
+/* Responsive */
+@media (max-width: 900px) {
+    .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .quote-section {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .nav-cta {
+        width: 100%;
+        justify-content: space-between;
+    }
 }
 
-header h2 {
-    margin: 0;
-    font-size: 28px;
-}
-
-/* ------------------ HERO ------------------ */
-.hero {
-    padding: 100px 20px;
-    text-align: center;
-    background: white;
-}
-
-.hero h1 {
-    font-size: 48px;
-    margin-bottom: 15px;
-}
-
-.hero p {
-    font-size: 18px;
-    max-width: 650px;
-    margin: 0 auto 30px;
-    color: #333;
-}
-
-.button {
-    background: #2563eb;
-    color: white;
-    padding: 15px 30px;
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 18px;
-    font-weight: bold;
-    transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.button:hover {
-    background: #1e4fc7;
-    transform: translateY(-3px);
-}
-
-/* ------------------ SECTIONS ------------------ */
-.section {
-    padding: 80px 20px;
-    text-align: center;
-}
-
-.section h2 {
-    font-size: 34px;
-    margin-bottom: 20px;
-}
-
-/* ------------------ CARDS ------------------ */
-.card-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 25px;
-    margin-top: 30px;
-}
-
-.card {
-    background: white;
-    padding: 25px;
-    width: 280px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.18);
-}
-
-.card h3 {
-    margin-top: 0;
-    font-size: 22px;
-}
-
-/* ------------------ STEPS ------------------ */
-.steps {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: left;
-    font-size: 18px;
-    line-height: 1.7;
-}
-
-/* ------------------ FOOTER ------------------ */
-footer {
-    background: #0a2540;
-    color: white;
-    text-align: center;
-    padding: 25px;
-    margin-top: 40px;
-}
-
-/* Smooth section transitions */
-html {
-    scroll-behavior: smooth;
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 32px;
+    }
+    .hero-sub {
+        font-size: 14px;
+    }
 }
 </style>
 </head>
@@ -159,117 +614,384 @@ html {
 <body>
 
 <header class="fade-in">
-    <h2>Local Growth Leads</h2>
-    <p>High-Intent Leads for Local Service Businesses</p>
+    <div class="header-logo">
+        <div class="logo-mark">L</div>
+        <span>Local Growth Leads</span>
+    </div>
+    <div class="nav-cta">
+        <a href="#industries" class="nav-link">Industries</a>
+        <a href="#how-it-works" class="nav-link">How it works</a>
+        <a href="#case-studies" class="nav-link">Case studies</a>
+        <button class="button-outline" onclick="document.getElementById('quote').scrollIntoView({behavior:'smooth'})">
+            Get a quote
+        </button>
+    </div>
 </header>
 
-<div class="hero fade-in">
-    <h1>Get More Customers. Grow Your Business.</h1>
-    <p>We generate exclusive, high-intent leads from homeowners actively searching for local services. No shared leads. No long-term contracts. Just results.</p>
-    <a class="button" href="#contact">Request Leads</a>
-</div>
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-left fade-in">
+            <div class="hero-kicker">Local lead generation, done right</div>
+            <h1>High-intent customers for your local service business.</h1>
+            <p class="hero-sub">
+                We build and rank local websites that send you exclusive, ready-to-buy leads—
+                not shared lists, not tire-kickers. Just real customers in your service area.
+            </p>
 
-<div class="section reveal">
-    <h2>Industries We Serve</h2>
+            <div class="hero-badges">
+                <div class="badge">Exclusive leads only</div>
+                <div class="badge">No long-term contracts</div>
+                <div class="badge">Pay for performance</div>
+            </div>
 
-    <div class="card-container">
-        <div class="card">
-            <h3>Roofing</h3>
-            <p>Exclusive homeowner repair & replacement leads.</p>
+            <div class="hero-ctas">
+                <button class="button-primary" onclick="document.getElementById('quote').scrollIntoView({behavior:'smooth'})">
+                    Get a quote
+                    <span>→</span>
+                </button>
+                <a href="#case-studies" class="nav-link">View case studies</a>
+            </div>
+
+            <div class="hero-note">
+                Built for roofing, junk removal, moving, dental, and other high-value local services.
+            </div>
+
+            <div class="hero-metrics">
+                <div class="metric">
+                    <span>3–5×</span>
+                    <span>More inbound leads from local search</span>
+                </div>
+                <div class="metric">
+                    <span>40–60%</span>
+                    <span>Lower cost per lead vs. marketplaces</span>
+                </div>
+            </div>
         </div>
 
-        <div class="card">
-            <h3>Junk Removal</h3>
-            <p>Local cleanout & hauling job requests.</p>
-        </div>
+        <div class="hero-right fade-in">
+            <div class="hero-panel">
+                <div class="hero-panel-tag">Live snapshot</div>
+                <div class="hero-panel-title">Sample lead flow</div>
+                <div class="hero-panel-sub">What a typical month can look like for a local partner.</div>
 
-        <div class="card">
-            <h3>Moving</h3>
-            <p>High-intent moving quote inquiries.</p>
-        </div>
-
-        <div class="card">
-            <h3>Dental</h3>
-            <p>New patient appointment requests.</p>
+                <div class="hero-panel-row">
+                    <span>Roofing inquiries</span>
+                    <span>32 / month</span>
+                </div>
+                <div class="hero-panel-row">
+                    <span>Junk removal jobs</span>
+                    <span>18 / month</span>
+                </div>
+                <div class="hero-panel-row">
+                    <span>Moving quotes</span>
+                    <span>24 / month</span>
+                </div>
+                <div class="hero-panel-row">
+                    <span>Dental new patients</span>
+                    <span>15 / month</span>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+</section>
 
-<div class="section reveal">
-    <h2>How It Works</h2>
+<section class="section" id="industries">
+    <div class="section-inner reveal">
+        <div class="section-header">
+            <div class="section-kicker">Industries we serve</div>
+            <h2>Built for high-value local service businesses.</h2>
+            <p>We focus on industries where one new customer can pay for months of leads.</p>
+        </div>
 
-    <div class="steps">
-        <p><strong>1.</strong> We build and rank local service websites on Google.</p>
-        <p><strong>2.</strong> Homeowners submit service requests through our pages.</p>
-        <p><strong>3.</strong> We send those leads directly to your business—instantly.</p>
+        <div class="card-grid">
+            <div class="card">
+                <h3>Roofing</h3>
+                <p>Exclusive homeowner repair & replacement leads from “roof repair near me” and similar searches.</p>
+            </div>
+            <div class="card">
+                <h3>Junk Removal</h3>
+                <p>Cleanout, hauling, and same-day junk removal requests from local homeowners and small businesses.</p>
+            </div>
+            <div class="card">
+                <h3>Moving</h3>
+                <p>High-intent moving quote requests from people actively planning local or short-distance moves.</p>
+            </div>
+            <div class="card">
+                <h3>Dental</h3>
+                <p>New patient inquiries for general, cosmetic, and emergency dental services in your area.</p>
+            </div>
+        </div>
     </div>
-</div>
+</section>
 
-<div class="section reveal" id="case-studies">
-    <h2>Case Studies</h2>
-    <p>Real results from real businesses. These examples show what’s possible when high‑intent local leads are delivered consistently.</p>
-
-    <div class="card-container">
-
-        <div class="card">
-            <h3>Roofing Company – 312% Lead Growth</h3>
-            <p><strong>Challenge:</strong> Inconsistent referrals and expensive shared leads.</p>
-            <p><strong>Strategy:</strong> Built a niche “roof repair near me” page optimized for local search.</p>
-            <p><strong>Results:</strong> BrightLocal & SEJ data show top‑3 rankings drive 300%+ more calls.</p>
+<section class="section" id="how-it-works">
+    <div class="section-inner reveal">
+        <div class="section-header">
+            <div class="section-kicker">How it works</div>
+            <h2>We handle the marketing. You answer the phone.</h2>
+            <p>Simple, transparent, and built around how local businesses actually operate.</p>
         </div>
 
-        <div class="card">
-            <h3>Junk Removal – 40% Lower Cost Per Lead</h3>
-            <p><strong>Challenge:</strong> Paying $45–$65 per shared lead.</p>
-            <p><strong>Strategy:</strong> Mobile‑optimized “same‑day junk removal” landing page.</p>
-            <p><strong>Results:</strong> Jobber & HomeAdvisor show organic leads cost 40–60% less.</p>
+        <div class="steps-list">
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>We build and rank local service sites.</h4>
+                    <p>We create niche websites targeting high-intent keywords in your city—then optimize them to rank on Google.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>Homeowners submit real service requests.</h4>
+                    <p>Visitors fill out quote forms or call directly from our pages when they’re ready to book.</p>
+                </div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>We send those leads straight to you.</h4>
+                    <p>Leads are routed exclusively to your business—no shared lists, no bidding wars, no middlemen.</p>
+                </div>
+            </div>
         </div>
-
-        <div class="card">
-            <h3>Moving Company – 2.4× More Quote Requests</h3>
-            <p><strong>Challenge:</strong> Seasonal demand + inconsistent bookings.</p>
-            <p><strong>Strategy:</strong> High‑intent quote form + local SEO.</p>
-            <p><strong>Results:</strong> HubSpot & WordStream show forms boost conversions 2–3×.</p>
-        </div>
-
-        <div class="card">
-            <h3>Dental Practice – 18 New Patients/Month</h3>
-            <p><strong>Challenge:</strong> Needed predictable new‑patient flow.</p>
-            <p><strong>Strategy:</strong> “Dentist near me” + “emergency dentist” SEO pages.</p>
-            <p><strong>Results:</strong> ADA & SEMrush show top‑3 rankings bring 15–25 inquiries/mo.</p>
-        </div>
-
     </div>
-</div>
+</section>
 
-<div class="section reveal" id="contact">
-    <h2>Get More Customers</h2>
-    <p>Email: <strong>hello@localgrowthleads.com</strong></p>
-    <p>Based in Atlanta, Georgia</p>
-</div>
+<section class="section" id="case-studies">
+    <div class="section-inner reveal">
+        <div class="section-header">
+            <div class="section-kicker">Case studies</div>
+            <h2>Real-world results backed by industry data.</h2>
+            <p>We model our strategy on what’s already proven to work in local search and lead generation.</p>
+        </div>
+
+        <div class="card-grid">
+            <div class="card case-card">
+                <h3>Roofing company – 312% lead growth</h3>
+                <p><strong>Challenge:</strong> Inconsistent referrals and expensive shared leads.</p>
+                <p><strong>Strategy:</strong> Niche “roof repair near me” pages optimized for local search intent.</p>
+                <p><strong>Results:</strong> BrightLocal & Search Engine Journal data show top‑3 rankings drive 300%+ more calls—our model follows the same playbook.</p>
+            </div>
+            <div class="card case-card">
+                <h3>Junk removal – 40% lower cost per lead</h3>
+                <p><strong>Challenge:</strong> Paying $45–$65 per shared lead on marketplaces.</p>
+                <p><strong>Strategy:</strong> Mobile-first “same-day junk removal” landing pages with clear CTAs.</p>
+                <p><strong>Results:</strong> Jobber & HomeAdvisor benchmarks show organic local leads cost 40–60% less per job.</p>
+            </div>
+            <div class="card case-card">
+                <h3>Moving company – 2.4× more quote requests</h3>
+                <p><strong>Challenge:</strong> Seasonal demand and inconsistent bookings.</p>
+                <p><strong>Strategy:</strong> High-intent quote forms and local SEO for “local movers” searches.</p>
+                <p><strong>Results:</strong> HubSpot & WordStream report multi-step forms can boost conversions 2–3×.</p>
+            </div>
+            <div class="card case-card">
+                <h3>Dental practice – 18 new patients/month</h3>
+                <p><strong>Challenge:</strong> Needed predictable new-patient flow without relying only on ads.</p>
+                <p><strong>Strategy:</strong> “Dentist near me” and “emergency dentist” pages with strong local SEO.</p>
+                <p><strong>Results:</strong> ADA & SEMrush data show top‑3 local rankings bring 15–25 inquiries per month.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="quote">
+    <div class="section-inner reveal">
+        <div class="quote-section">
+            <div class="quote-copy">
+                <h3>Get a custom lead plan for your business.</h3>
+                <p>Tell us a bit about your company and the services you offer. We’ll review your market, estimate lead volume, and send over a simple proposal—no pressure, no hard sell.</p>
+                <ul class="quote-bullets">
+                    <li><span>✔</span> Built around your service area and ideal jobs</li>
+                    <li><span>✔</span> Transparent pricing and lead expectations</li>
+                    <li><span>✔</span> No long-term contracts or hidden fees</li>
+                </ul>
+            </div>
+
+            <div class="form-shell">
+                <div class="form-title">Get a quote</div>
+                <div class="form-sub">Multi-step form so we can give you accurate numbers.</div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+
+                <!-- Replace action with your FormSubmit/Web3Forms endpoint later -->
+                <form id="leadForm" action="https://example.com/your-form-endpoint" method="POST">
+                    <!-- Step 1 -->
+                    <div class="form-step active" data-step="1">
+                        <div class="form-row">
+                            <label for="businessName">Business name</label>
+                            <input type="text" id="businessName" name="businessName" placeholder="Example: Skyline Roofing Co." required>
+                        </div>
+                        <div class="form-row">
+                            <label for="location">Primary service area (city & state)</label>
+                            <input type="text" id="location" name="location" placeholder="Example: Atlanta, GA" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="website">Website (if you have one)</label>
+                            <input type="url" id="website" name="website" placeholder="https://">
+                        </div>
+                        <div class="form-actions">
+                            <span style="font-size:11px;color:#9ca3af;">Step 1 of 4</span>
+                            <button type="button" class="button-primary-sm" onclick="nextStep()">
+                                Next
+                                <span>→</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="form-step" data-step="2">
+                        <div class="form-row">
+                            <label for="industry">Industry</label>
+                            <select id="industry" name="industry" required>
+                                <option value="">Select your industry</option>
+                                <option>Roofing</option>
+                                <option>Junk Removal</option>
+                                <option>Moving</option>
+                                <option>Dental</option>
+                                <option>Other local service</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <label for="services">Services you want leads for</label>
+                            <textarea id="services" name="services" placeholder="Example: roof repair, full replacement, emergency tarping" required></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="button-secondary" onclick="prevStep()">
+                                ← Back
+                            </button>
+                            <button type="button" class="button-primary-sm" onclick="nextStep()">
+                                Next
+                                <span>→</span>
+                            </button>
+                        </div>
+                        <div class="form-footnote">Step 2 of 4</div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="form-step" data-step="3">
+                        <div class="form-row">
+                            <label for="name">Your name</label>
+                            <input type="text" id="name" name="name" placeholder="First and last name" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="email">Work email</label>
+                            <input type="email" id="email" name="email" placeholder="you@company.com" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="phone">Phone number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555" required>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="button-secondary" onclick="prevStep()">
+                                ← Back
+                            </button>
+                            <button type="button" class="button-primary-sm" onclick="nextStep()">
+                                Next
+                                <span>→</span>
+                            </button>
+                        </div>
+                        <div class="form-footnote">Step 3 of 4</div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="form-step" data-step="4">
+                        <div class="form-row">
+                            <label for="budget">Approximate monthly budget for leads</label>
+                            <select id="budget" name="budget" required>
+                                <option value="">Select a range</option>
+                                <option>Under $500</option>
+                                <option>$500 – $1,500</option>
+                                <option>$1,500 – $3,000</option>
+                                <option>$3,000+</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <label for="notes">Anything else we should know?</label>
+                            <textarea id="notes" name="notes" placeholder="Optional: current marketing, goals, or questions."></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="button-secondary" onclick="prevStep()">
+                                ← Back
+                            </button>
+                            <button type="submit" class="button-primary-sm">
+                                Submit quote request
+                            </button>
+                        </div>
+                        <div class="form-footnote">
+                            Step 4 of 4 • We’ll respond within one business day with a simple, clear proposal.
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-inner contact-section reveal">
+        <div class="section-header">
+            <div class="section-kicker">Contact</div>
+            <h2>Prefer to reach out directly?</h2>
+            <p>We’re based in Atlanta and work with local businesses across the U.S.</p>
+        </div>
+        <p>Email: <strong>hello@localgrowthleads.com</strong></p>
+        <p>Atlanta, Georgia</p>
+    </div>
+</section>
 
 <footer>
-    <p>© 2026 Local Growth Leads. All Rights Reserved.</p>
+    <p>© 2026 Local Growth Leads. All rights reserved.</p>
 </footer>
 
 <script>
-// Scroll reveal logic
+// Scroll reveal
 const reveals = document.querySelectorAll('.reveal');
-
 function revealOnScroll() {
     for (let i = 0; i < reveals.length; i++) {
         const windowHeight = window.innerHeight;
         const elementTop = reveals[i].getBoundingClientRect().top;
         const revealPoint = 120;
-
         if (elementTop < windowHeight - revealPoint) {
             reveals[i].classList.add('visible');
         }
     }
 }
-
 window.addEventListener('scroll', revealOnScroll);
 revealOnScroll();
+
+// Multi-step form logic
+let currentStep = 1;
+const totalSteps = 4;
+const progressFill = document.getElementById('progressFill');
+const steps = document.querySelectorAll('.form-step');
+
+function updateSteps() {
+    steps.forEach(step => {
+        const stepNum = parseInt(step.getAttribute('data-step'), 10);
+        step.classList.toggle('active', stepNum === currentStep);
+    });
+    const percent = (currentStep / totalSteps) * 100;
+    progressFill.style.width = percent + '%';
+}
+
+function nextStep() {
+    if (currentStep < totalSteps) {
+        currentStep++;
+        updateSteps();
+    }
+}
+
+function prevStep() {
+    if (currentStep > 1) {
+        currentStep--;
+        updateSteps();
+    }
+}
+
+updateSteps();
 </script>
 
 </body>
