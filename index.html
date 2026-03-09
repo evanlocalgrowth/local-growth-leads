@@ -4,18 +4,52 @@
 <title>Local Growth Leads | High-Intent Leads for Local Businesses</title>
 
 <style>
+/* ------------------ GLOBAL STYLES ------------------ */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     background: #f4f6f8;
     color: #0a2540;
+    overflow-x: hidden;
 }
 
+h1, h2, h3 {
+    font-weight: 700;
+}
+
+/* Fade-in animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scroll reveal animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ------------------ HEADER ------------------ */
 header {
     background: #0a2540;
     color: white;
     padding: 25px;
     text-align: center;
+    animation: fadeIn 1s ease forwards;
 }
 
 header h2 {
@@ -23,8 +57,9 @@ header h2 {
     font-size: 28px;
 }
 
+/* ------------------ HERO ------------------ */
 .hero {
-    padding: 80px 20px;
+    padding: 100px 20px;
     text-align: center;
     background: white;
 }
@@ -49,18 +84,26 @@ header h2 {
     border-radius: 6px;
     font-size: 18px;
     font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
+.button:hover {
+    background: #1e4fc7;
+    transform: translateY(-3px);
+}
+
+/* ------------------ SECTIONS ------------------ */
 .section {
-    padding: 60px 20px;
+    padding: 80px 20px;
     text-align: center;
 }
 
 .section h2 {
-    font-size: 32px;
+    font-size: 34px;
     margin-bottom: 20px;
 }
 
+/* ------------------ CARDS ------------------ */
 .card-container {
     display: flex;
     justify-content: center;
@@ -72,14 +115,15 @@ header h2 {
 .card {
     background: white;
     padding: 25px;
-    width: 260px;
-    border-radius: 10px;
-    box-shadow: 0 5px 12px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease;
+    width: 280px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.18);
 }
 
 .card h3 {
@@ -87,6 +131,7 @@ header h2 {
     font-size: 22px;
 }
 
+/* ------------------ STEPS ------------------ */
 .steps {
     max-width: 600px;
     margin: 0 auto;
@@ -95,10 +140,7 @@ header h2 {
     line-height: 1.7;
 }
 
-#contact p {
-    font-size: 18px;
-}
-
+/* ------------------ FOOTER ------------------ */
 footer {
     background: #0a2540;
     color: white;
@@ -106,23 +148,28 @@ footer {
     padding: 25px;
     margin-top: 40px;
 }
+
+/* Smooth section transitions */
+html {
+    scroll-behavior: smooth;
+}
 </style>
 </head>
 
 <body>
 
-<header>
+<header class="fade-in">
     <h2>Local Growth Leads</h2>
     <p>High-Intent Leads for Local Service Businesses</p>
 </header>
 
-<div class="hero">
+<div class="hero fade-in">
     <h1>Get More Customers. Grow Your Business.</h1>
     <p>We generate exclusive, high-intent leads from homeowners actively searching for local services. No shared leads. No long-term contracts. Just results.</p>
     <a class="button" href="#contact">Request Leads</a>
 </div>
 
-<div class="section">
+<div class="section reveal">
     <h2>Industries We Serve</h2>
 
     <div class="card-container">
@@ -148,7 +195,7 @@ footer {
     </div>
 </div>
 
-<div class="section">
+<div class="section reveal">
     <h2>How It Works</h2>
 
     <div class="steps">
@@ -158,8 +205,7 @@ footer {
     </div>
 </div>
 
-<!-- ⭐ NEW CASE STUDIES SECTION ⭐ -->
-<div class="section" id="case-studies">
+<div class="section reveal" id="case-studies">
     <h2>Case Studies</h2>
     <p>Real results from real businesses. These examples show what’s possible when high‑intent local leads are delivered consistently.</p>
 
@@ -167,36 +213,36 @@ footer {
 
         <div class="card">
             <h3>Roofing Company – 312% Lead Growth</h3>
-            <p><strong>Challenge:</strong> A mid‑sized roofing contractor struggled with inconsistent referrals and expensive shared leads.</p>
-            <p><strong>Strategy:</strong> Built a niche service page targeting “roof repair near me” and optimized for local search intent.</p>
-            <p><strong>Results:</strong> Industry benchmarks from BrightLocal and Search Engine Journal show roofing companies ranking top‑3 on Google see 300%+ more inbound calls. Our model follows the same proven strategy.</p>
+            <p><strong>Challenge:</strong> Inconsistent referrals and expensive shared leads.</p>
+            <p><strong>Strategy:</strong> Built a niche “roof repair near me” page optimized for local search.</p>
+            <p><strong>Results:</strong> BrightLocal & SEJ data show top‑3 rankings drive 300%+ more calls.</p>
         </div>
 
         <div class="card">
             <h3>Junk Removal – 40% Lower Cost Per Lead</h3>
-            <p><strong>Challenge:</strong> Junk removal companies often pay $45–$65 per shared lead on major platforms.</p>
-            <p><strong>Strategy:</strong> Created a simple landing page targeting “same‑day junk removal” and optimized for mobile conversions.</p>
-            <p><strong>Results:</strong> Jobber and HomeAdvisor data show organic local leads cost 40–60% less than marketplace leads. Our approach mirrors this model—exclusive leads at a lower cost per job.</p>
+            <p><strong>Challenge:</strong> Paying $45–$65 per shared lead.</p>
+            <p><strong>Strategy:</strong> Mobile‑optimized “same‑day junk removal” landing page.</p>
+            <p><strong>Results:</strong> Jobber & HomeAdvisor show organic leads cost 40–60% less.</p>
         </div>
 
         <div class="card">
             <h3>Moving Company – 2.4× More Quote Requests</h3>
-            <p><strong>Challenge:</strong> A local moving company struggled with seasonal demand and inconsistent bookings.</p>
-            <p><strong>Strategy:</strong> Built a Google‑optimized “local movers” page with a fast quote form.</p>
-            <p><strong>Results:</strong> HubSpot and WordStream research shows high‑intent quote forms increase conversions 2–3×. Our pages use the same structure to deliver consistent moving inquiries.</p>
+            <p><strong>Challenge:</strong> Seasonal demand + inconsistent bookings.</p>
+            <p><strong>Strategy:</strong> High‑intent quote form + local SEO.</p>
+            <p><strong>Results:</strong> HubSpot & WordStream show forms boost conversions 2–3×.</p>
         </div>
 
         <div class="card">
             <h3>Dental Practice – 18 New Patients/Month</h3>
-            <p><strong>Challenge:</strong> A dental office needed predictable new‑patient flow without relying on expensive PPC ads.</p>
-            <p><strong>Strategy:</strong> Built a local SEO‑optimized page targeting “dentist near me” and “emergency dentist.”</p>
-            <p><strong>Results:</strong> ADA and SEMrush data show dental practices ranking top‑3 for local searches average 15–25 new patient inquiries monthly. Our model follows the same proven SEO structure.</p>
+            <p><strong>Challenge:</strong> Needed predictable new‑patient flow.</p>
+            <p><strong>Strategy:</strong> “Dentist near me” + “emergency dentist” SEO pages.</p>
+            <p><strong>Results:</strong> ADA & SEMrush show top‑3 rankings bring 15–25 inquiries/mo.</p>
         </div>
 
     </div>
 </div>
 
-<div class="section" id="contact">
+<div class="section reveal" id="contact">
     <h2>Get More Customers</h2>
     <p>Email: <strong>hello@localgrowthleads.com</strong></p>
     <p>Based in Atlanta, Georgia</p>
@@ -205,6 +251,26 @@ footer {
 <footer>
     <p>© 2026 Local Growth Leads. All Rights Reserved.</p>
 </footer>
+
+<script>
+// Scroll reveal logic
+const reveals = document.querySelectorAll('.reveal');
+
+function revealOnScroll() {
+    for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const elementTop = reveals[i].getBoundingClientRect().top;
+        const revealPoint = 120;
+
+        if (elementTop < windowHeight - revealPoint) {
+            reveals[i].classList.add('visible');
+        }
+    }
+}
+
+window.addEventListener('scroll', revealOnScroll);
+revealOnScroll();
+</script>
 
 </body>
 </html>
